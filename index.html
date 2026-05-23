@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bubble Dither</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas id="stage"></canvas>
+
+    <form class="panel" autocomplete="off">
+      <div class="mode-toggle" role="group" aria-label="Источник">
+        <button id="modeText" class="active" type="button">Текст</button>
+        <button id="modeImage" type="button">Фото</button>
+      </div>
+
+      <input id="textInput" class="source text-source" type="text" value="Пузырь" aria-label="Текст" />
+
+      <label class="source upload-source hidden">
+        <input id="imageInput" type="file" accept="image/*" />
+        <span id="imageLabel">Загрузить</span>
+      </label>
+
+      <button id="clearImage" class="icon-button" type="button" title="Сброс" aria-label="Сброс">
+        ↻
+      </button>
+
+      <label class="swatch" title="Цвет фона" aria-label="Цвет фона">
+        <input id="background" type="color" value="#86d7ee" />
+        <span class="swatch-chip" data-swatch="background"></span>
+      </label>
+
+      <label class="swatch" title="Цвет пузырей" aria-label="Цвет пузырей">
+        <input id="bubble" type="color" value="#ffffff" />
+        <span class="swatch-chip" data-swatch="bubble"></span>
+      </label>
+
+      <button id="imageColor" class="icon-button color-toggle" type="button" title="Цвет из фото" aria-label="Цвет из фото">
+        RGB
+      </button>
+
+      <div class="speed-group">
+        <button id="pause" class="pause-button" type="button" title="Пауза" aria-label="Пауза">II</button>
+        <div id="speed" class="control speed-control slider-control" data-key="speed" data-min="0" data-max="3" data-value="1" tabindex="0" role="slider" aria-label="Скорость">
+          <span class="control-fill"></span>
+          <span class="control-label">Скорость</span>
+        </div>
+      </div>
+
+      <div id="bigChance" class="control slider-control" data-key="bigChance" data-min="0" data-max="0.45" data-value="0.16" tabindex="0" role="slider" aria-label="Большие">
+        <span class="control-fill"></span>
+        <span class="control-label">Большие</span>
+      </div>
+
+      <div id="cellSize" class="control slider-control" data-key="cellSize" data-min="8" data-max="42" data-value="22" tabindex="0" role="slider" aria-label="Ячейка">
+        <span class="control-fill"></span>
+        <span class="control-label">Ячейка</span>
+      </div>
+
+      <div id="bubbleScale" class="control slider-control" data-key="bubbleScale" data-min="0.65" data-max="1.35" data-value="1.02" tabindex="0" role="slider" aria-label="Масштаб">
+        <span class="control-fill"></span>
+        <span class="control-label">Масштаб</span>
+      </div>
+
+      <div id="stroke" class="control slider-control" data-key="stroke" data-min="1" data-max="14" data-value="6" tabindex="0" role="slider" aria-label="Обводка">
+        <span class="control-fill"></span>
+        <span class="control-label">Обводка</span>
+      </div>
+
+      <button id="exportSvg" class="icon-button" type="button" title="Скачать SVG" aria-label="Скачать SVG">
+        SVG
+      </button>
+      <button id="exportWebm" class="icon-button" type="button" title="Скачать WebM" aria-label="Скачать WebM">
+        WebM
+      </button>
+    </form>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
