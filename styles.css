@@ -31,6 +31,41 @@ input {
   height: 100vh;
 }
 
+.author-link {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  z-index: 11;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: var(--panel-ink);
+  background: var(--panel-fill);
+  box-shadow: 0 8px 24px rgba(0, 20, 72, 0.1);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  backdrop-filter: blur(16px);
+}
+
+.author-label {
+  color: rgba(0, 20, 72, 0.42);
+}
+
+.telegram-icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  fill: currentColor;
+}
+
+.author-link:active {
+  transform: translateY(1px);
+}
+
 .panel {
   position: fixed;
   left: 12px;
@@ -256,7 +291,136 @@ input {
 }
 
 @media (max-width: 720px) {
+  .author-link {
+    top: max(10px, env(safe-area-inset-top));
+    right: max(10px, env(safe-area-inset-right));
+    height: 34px;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+
   .panel {
-    bottom: 10px;
+    left: 8px;
+    right: 8px;
+    bottom: max(8px, env(safe-area-inset-bottom));
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 6px;
+    align-items: stretch;
+    padding: 8px;
+    overflow: hidden;
+    border-radius: 18px;
+  }
+
+  .mode-toggle,
+  .source,
+  .icon-button,
+  .swatch,
+  .control,
+  .speed-group {
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    height: 48px;
+    flex-basis: auto;
+  }
+
+  .mode-toggle {
+    order: 1;
+    grid-column: span 2;
+    padding: 4px;
+  }
+
+  .source {
+    order: 2;
+    grid-column: span 4;
+    padding: 0 12px;
+  }
+
+  .icon-button,
+  .swatch,
+  .color-toggle {
+    grid-column: span 1;
+  }
+
+  #clearImage {
+    order: 3;
+  }
+
+  .swatch {
+    order: 4;
+  }
+
+  #imageColor {
+    order: 5;
+  }
+
+  #exportSvg {
+    order: 6;
+  }
+
+  #exportWebm {
+    order: 7;
+  }
+
+  .swatch {
+    padding: 4px;
+  }
+
+  .swatch-chip {
+    width: 100%;
+    height: 100%;
+  }
+
+  .speed-group {
+    order: 8;
+    grid-column: span 3;
+    max-width: none;
+    height: 48px;
+  }
+
+  .pause-button {
+    flex-basis: 48px;
+    height: 48px;
+  }
+
+  .speed-control {
+    height: 48px;
+  }
+
+  #bigChance {
+    order: 9;
+    grid-column: span 3;
+  }
+
+  #cellSize,
+  #bubbleScale,
+  #stroke {
+    grid-column: span 2;
+  }
+
+  #cellSize {
+    order: 10;
+  }
+
+  #bubbleScale {
+    order: 11;
+  }
+
+  #stroke {
+    order: 12;
+  }
+
+  .control {
+    font-size: 13px;
+  }
+
+  .icon-button {
+    padding: 0 2px;
+    font-size: 13px;
+  }
+
+  .mode-toggle button {
+    font-size: 13px;
   }
 }
